@@ -22,7 +22,7 @@ import 'package:charts_common/common.dart' as common
         TextMeasurement,
         TextStyle;
 import 'package:flutter/rendering.dart'
-    show Color, TextBaseline, TextPainter, TextSpan, TextStyle;
+    show Color, FontWeight, TextBaseline, TextPainter, TextSpan, TextStyle;
 
 /// Flutter implementation for text measurement and painter.
 class TextElement implements common.TextElement {
@@ -144,7 +144,22 @@ class TextElement implements common.TextElement {
             textStyle!.color!.g,
             textStyle!.color!.b,
           );
-
+    FontWeight? fontWeight;
+    switch (textStyle?.fontWeight) {
+      case '400':
+        fontWeight = FontWeight.w400;
+        break;
+      case '500':
+        fontWeight = FontWeight.w500;
+        break;
+      case '600':
+        fontWeight = FontWeight.w600;
+        break;
+      case '700':
+        fontWeight = FontWeight.w700;
+        break;
+      default:
+    }
     _textPainter = new TextPainter(
         text: new TextSpan(
             text: text,
@@ -153,7 +168,7 @@ class TextElement implements common.TextElement {
                 fontSize: textStyle?.fontSize?.toDouble(),
                 fontFamily: textStyle?.fontFamily,
                 height: textStyle?.lineHeight,         
-                fontWeight: FontWeight.w900,
+                fontWeight: fontWeight,
             )))
       ..textDirection = TextDirection.ltr
       // TODO Flip once textAlign works
