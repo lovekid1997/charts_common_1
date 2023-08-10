@@ -152,7 +152,9 @@ class TextElement implements common.TextElement {
                 color: color,
                 fontSize: textStyle?.fontSize?.toDouble(),
                 fontFamily: textStyle?.fontFamily,
-                height: textStyle?.lineHeight)))
+                height: textStyle?.lineHeight,         
+                fontWeight: FontWeight.w900,
+            )))
       ..textDirection = TextDirection.ltr
       // TODO Flip once textAlign works
       ..textAlign = TextAlign.left
